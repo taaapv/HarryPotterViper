@@ -26,9 +26,14 @@ class HeroesInteractor: HeroesInteractorInputProtocol {
     }
     
     func fetchHeroes() {
-        NetworkManager.shared.fetchData { [unowned self] heroes in
-            presenter.heroesDidReceive(heroes)
-            DataManager.shared.setHeroes(heroes)
+        NetworkManager.shared.fetchData(from: Link.harryPotterApi.rawValue) { [unowned self] result in
+            switch result {
+            case .success(let heroes):
+                self.presenter.heroesDidReceive(heroes)
+                DataManager.shared.setHeroes(heroes)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
     
