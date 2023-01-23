@@ -23,8 +23,18 @@ class HeroCell: UITableViewCell, HeroCellModelRepresentable {
 
         var content = defaultContentConfiguration()
         content.text = viewModel.heroName
-        guard let imageData = ImageManager.shared.fetchImage(from: viewModel.heroImage) else { return }
-        content.image = UIImage(data: imageData)
-        contentConfiguration = content
+        
+        ImageManager.shared.fetchImage(from: viewModel.heroImage) { [unowned self] result in
+            switch result {
+            case .success(let imageData):
+                content.image = UIImage(data: imageData)
+                self.contentConfiguration = content
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.contentConfiguration = content
+            }
+        } completionWithCompletedString: { progress in
+            content.secondaryText = progress?.localizedDescription
+        }
     }
 }

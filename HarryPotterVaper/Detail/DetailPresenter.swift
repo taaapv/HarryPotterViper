@@ -35,8 +35,18 @@ extension DetailPresenter: DetailInteractorOutputProtocol {
         let patronusTitle = "Patronus: \(hero.patronus)"
         view.displayPatronus(with: patronusTitle)
         
-        guard let imageData = ImageManager.shared.fetchImage(from: hero.image) else { return }
-        view.displayImage(with: imageData)
+        ImageManager.shared.fetchImage(from: hero.image) { [unowned self] result in
+            switch result {
+            case .success(let imageData):
+                self.view.displayImage(with: imageData)
+            case .failure(let error):
+                print(error)
+            }
+        } completionWithCompletedString: { [unowned self] progress in
+            guard let progress = progress else { return }
+            self.view.displayCompletedText(with: progress.localizedDescription)
+            self.view.displayProgressView(with: progress.fractionCompleted)
+        }
     }
     
     func receiveFavoriteStatus(_ status: Bool) {

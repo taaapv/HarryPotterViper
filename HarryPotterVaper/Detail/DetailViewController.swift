@@ -8,10 +8,12 @@
 import UIKit
 
 protocol DetailViewInputProtocol: AnyObject {
-    func displayName(with title: String)
+    func displayName(with nameTitle: String)
     func displayHouse(with title: String)
     func displayPatronus(with title: String)
     func displayImage(with imageData: Data)
+    func displayCompletedText(with completedText: String)
+    func displayProgressView(with progress: Double)
     func displayFavoriteButton(with status: Bool)
 }
 
@@ -23,7 +25,8 @@ protocol DetailViewOutputProtocol {
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var completedLabel: UILabel!
     @IBOutlet weak var heroImage: UIImageView!
     @IBOutlet weak var houseLabel: UILabel!
     @IBOutlet weak var patronusLabel: UILabel!
@@ -42,8 +45,16 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailViewInputProtocol {
-    func displayName(with title: String) {
-        nameLabel.text = title
+    func displayCompletedText(with completedText: String) {
+        completedLabel.text = completedText
+    }
+    
+    func displayProgressView(with progress: Double) {
+        progressView.setProgress(Float(progress), animated: true)
+    }
+    
+    func displayName(with nameTitle: String) {
+        title = nameTitle
     }
     
     func displayHouse(with title: String) {
