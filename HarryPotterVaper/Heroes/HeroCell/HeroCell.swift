@@ -22,6 +22,8 @@ class HeroCell: UITableViewCell, HeroCellModelRepresentable {
         guard let viewModel = viewModel as? HeroCellViewModel else { return }
 
         var content = defaultContentConfiguration()
+        content.imageProperties.maximumSize = CGSize(width: 80, height: 80)
+        content.imageProperties.cornerRadius = 40
         content.text = viewModel.heroName
         
         ImageManager.shared.fetchImage(from: viewModel.heroImage) { [unowned self] result in

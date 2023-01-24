@@ -34,7 +34,9 @@ class NetworkManager {
     func postRequest(to url: String, parameters: Hero) {
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
 
-        AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+        AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers)
+            .validate()
+            .response { response in
             switch response.result {
             case .success(let data):
                 do {
