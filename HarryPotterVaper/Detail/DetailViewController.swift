@@ -21,6 +21,7 @@ protocol DetailViewOutputProtocol {
     init(view: DetailViewInputProtocol)
     func showDetails()
     func favoriteButtonDidPressed()
+    func saveButtonDidPressed()
 }
 
 class DetailViewController: UIViewController {
@@ -41,6 +42,10 @@ class DetailViewController: UIViewController {
     
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
         presenter.favoriteButtonDidPressed()
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        presenter.saveButtonDidPressed()
     }
 }
 

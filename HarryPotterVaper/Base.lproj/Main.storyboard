@@ -100,6 +100,22 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SdC-Hp-YEq">
                                 <rect key="frame" x="16" y="96" width="343" height="4"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOr-ms-24B">
+                                <rect key="frame" x="128" y="553" width="119" height="44"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="119" id="Hfc-b7-biJ"/>
+                                    <constraint firstAttribute="height" constant="44" id="Uas-cQ-flS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save Hero">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="PC4-la-a9U" eventType="touchUpInside" id="82b-eI-MBQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fvi-PO-2zI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -107,6 +123,7 @@
                             <constraint firstItem="fvi-PO-2zI" firstAttribute="trailing" secondItem="QqI-8H-tDx" secondAttribute="trailing" constant="94" id="0sH-o2-Tlq"/>
                             <constraint firstItem="SdC-Hp-YEq" firstAttribute="leading" secondItem="fvi-PO-2zI" secondAttribute="leading" constant="16" id="3el-4U-Ryf"/>
                             <constraint firstItem="fvi-PO-2zI" firstAttribute="trailing" secondItem="g48-I9-y3g" secondAttribute="trailing" constant="16" id="4KV-1m-lPM"/>
+                            <constraint firstItem="fvi-PO-2zI" firstAttribute="bottom" secondItem="gOr-ms-24B" secondAttribute="bottom" constant="70" id="9Js-3c-jEe"/>
                             <constraint firstItem="QqI-8H-tDx" firstAttribute="top" secondItem="EJx-mn-sn6" secondAttribute="bottom" constant="206" id="BG0-W5-ZR1"/>
                             <constraint firstItem="hq7-IM-puf" firstAttribute="top" secondItem="EJx-mn-sn6" secondAttribute="bottom" constant="18" id="Lfj-bD-3IG"/>
                             <constraint firstItem="SdC-Hp-YEq" firstAttribute="top" secondItem="fvi-PO-2zI" secondAttribute="top" id="LwF-uo-6eG"/>
@@ -114,6 +131,7 @@
                             <constraint firstItem="fvi-PO-2zI" firstAttribute="trailing" secondItem="SdC-Hp-YEq" secondAttribute="trailing" constant="16" id="NcR-5u-unv"/>
                             <constraint firstItem="hq7-IM-puf" firstAttribute="centerX" secondItem="twS-KB-sh3" secondAttribute="centerX" id="Rs0-ay-JFd"/>
                             <constraint firstItem="EJx-mn-sn6" firstAttribute="top" secondItem="fvi-PO-2zI" secondAttribute="top" constant="5" id="TMS-A1-j6M"/>
+                            <constraint firstItem="gOr-ms-24B" firstAttribute="centerX" secondItem="twS-KB-sh3" secondAttribute="centerX" id="Zqv-hU-cLT"/>
                             <constraint firstItem="fvi-PO-2zI" firstAttribute="trailing" secondItem="EJx-mn-sn6" secondAttribute="trailing" constant="16" id="c8x-Gy-LY8"/>
                             <constraint firstItem="g48-I9-y3g" firstAttribute="top" secondItem="hq7-IM-puf" secondAttribute="bottom" constant="40" id="dFt-a7-BGj"/>
                             <constraint firstItem="oXb-TC-Whf" firstAttribute="leading" secondItem="fvi-PO-2zI" secondAttribute="leading" constant="16" id="evv-Ro-G6S"/>

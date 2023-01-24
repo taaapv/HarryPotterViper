@@ -10,6 +10,7 @@ import Alamofire
 
 enum Link: String {
     case harryPotterApi = "https://hp-api.onrender.com/api/characters"
+    case postRequest = "https://jsonplaceholder.typicode.com/posts"
 }
 
 class NetworkManager {
@@ -28,5 +29,23 @@ class NetworkManager {
                     completion(.failure(error))
                 }
             }
+    }
+    
+    func postRequest(to url: String, parameters: Hero) {
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+
+        AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .fragmentsAllowed)
+                    print(json)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

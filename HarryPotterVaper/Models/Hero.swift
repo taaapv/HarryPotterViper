@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Hero: Decodable {
+struct Hero: Codable {
     let name: String
     let house: House
     let patronus: Patronus

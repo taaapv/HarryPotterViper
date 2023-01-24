@@ -12,6 +12,7 @@ protocol DetailInteractorInputProtocol {
     init(presenter: DetailInteractorOutputProtocol, hero: Hero)
     func getHero()
     func toggleFavoriteStatus()
+    func sendDataToServer()
 }
 
 protocol DetailInteractorOutputProtocol: AnyObject {
@@ -44,5 +45,9 @@ class DetailInteractor: DetailInteractorInputProtocol {
     func toggleFavoriteStatus() {
         isFavorite.toggle()
         presenter.receiveFavoriteStatus(isFavorite)
+    }
+    
+    func sendDataToServer() {
+        NetworkManager.shared.postRequest(to: Link.postRequest.rawValue, parameters: hero)
     }
 }

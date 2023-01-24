@@ -23,6 +23,10 @@ class DetailPresenter: DetailViewOutputProtocol {
     func favoriteButtonDidPressed() {
         interactor.toggleFavoriteStatus()
     }
+    
+    func saveButtonDidPressed() {
+        interactor.sendDataToServer()
+    }
 }
 
 extension DetailPresenter: DetailInteractorOutputProtocol {
